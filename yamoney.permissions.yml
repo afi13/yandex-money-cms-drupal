@@ -1,0 +1,12 @@
+access yandex money transaction:
+  title: 'Access YaMoney transaction'
+  description: 'Display the yandex money transaction.'
+  restrict access: true
+access own yandex money transaction:
+  title: 'Access own YaMoney transaction'
+  description: 'Display the yandex money transaction by own user.'
+  restrict access: true
+access yamoney settings:
+  title: 'Access YaMoney API'
+  description: 'Access to Yandex Money API variables.'
+  restrict access: true

@@ -1,0 +1,7 @@
+name: Yandex.Money Core
+type: module
+description: 'Yandex.Money core module.'
+package: Yandex.Money
+# version: VERSION
+core: 8.x
+#configure: yamoney.config

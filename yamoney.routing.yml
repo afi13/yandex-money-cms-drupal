@@ -1,0 +1,6 @@
+yamoney.check_order:
+  path: '/yamoney/check_order'
+  defaults:
+    _controller: '\Drupal\yamoney\Controller\YamoneyController::checkServerIP'
+  requirements:
+    _permission: 'administer nodes'

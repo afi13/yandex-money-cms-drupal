@@ -1,0 +1,6 @@
+# Ignore development files.
+.idea
+.buildpath
+.project
+.settings
+
