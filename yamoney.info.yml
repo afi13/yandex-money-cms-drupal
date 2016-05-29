@@ -4,4 +4,4 @@ description: 'Yandex.Money core module.'
 package: Yandex.Money
 # version: VERSION
 core: 8.x
-#configure: yamoney.config
+configure: yamoney.settings

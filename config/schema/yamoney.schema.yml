@@ -1,0 +1,37 @@
+yamoney.settings:
+  type: config_object
+  label: 'Settings for Yamoney module'
+  mapping:
+    yamoney_ip:
+      type: string
+      label: 'Allowed IPs for callbacks'
+    yamoney_payment_method:
+      type: string
+      label: 'Enabled payment methods'
+    yamoney_default_payment_method:
+      type: string
+      label: 'Default payment method'
+    yamoney_shop:
+      type: string
+      label: 'Select if you have a shop in Yandex.Money'
+    yamoney_shop_id:
+      type: string
+      label: 'Shop ID'
+    yamoney_scid:
+      type: string
+      label: 'Shop SCID'
+    yamoney_secret:
+      type: string
+      label: 'Shop security key'
+    yamoney_receiver:
+      type: string
+      label: 'Purse number'
+    yamoney_formcomment:
+      type: string
+      label: 'Pay comment'
+    yamoney_success_text:
+      type: string
+      label: 'Text for success page'
+    yamoney_fail_text:
+      type: string
+      label: 'Text for fail page'

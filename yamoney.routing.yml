@@ -1,6 +1,13 @@
-yamoney.check_order:
-  path: '/yamoney/check_order'
+#yamoney.check_order:
+#  path: '/yamoney/check_order'
+#  defaults:
+#    _controller: '\Drupal\yamoney\Controller\YamoneyController::checkServerIP'
+#  requirements:
+#    _permission: 'administer nodes'
+yamoney.settings:
+  path: '/admin/config/system/yamoney'
   defaults:
-    _controller: '\Drupal\yamoney\Controller\YamoneyController::checkServerIP'
+      _form: '\Drupal\yamoney\Form\YamapsSettingsForm'
+      _title: 'Yandex.Money settings'
   requirements:
-    _permission: 'administer nodes'
+      _permission: 'access yamoney settings'

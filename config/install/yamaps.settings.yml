@@ -1,0 +1,9 @@
+yamoney_ip: '0.0.0.0'
+yamoney_mode: 'test'
+yamoney_default_payment_method: 'PC'
+yamoney_shop: 0
+yamoney_shop_id: ''
+yamoney_scid: ''
+yamoney_secret: ''
+yamoney_receiver: ''
+yamoney_formcomment: ''

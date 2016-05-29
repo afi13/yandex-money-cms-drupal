@@ -5,3 +5,26 @@
  * Yandex money core module.
  */
 
+define('YAMONEY_CHECK_RESULT_CODE_SUCCESS', 0);
+define('YAMONEY_CHECK_RESULT_CODE_ERROR_MD5', 1);
+define('YAMONEY_CHECK_RESULT_CODE_ERROR_CUSTOM', 100);
+define('YAMONEY_CHECK_RESULT_CODE_ERROR_REQUEST', 200);
+
+/**
+ * @return array
+ */
+function yamoney_get_payment_methods() {
+  return [
+    'PC' => t('Payment from a Yandex.Money e-wallet'),
+    'AC' => t('Payment by any bank card'),
+    'GP' => t('Payment in cash via retailers and payment kiosks'),
+    'MC' => t('Payment from a mobile phone balance'),
+    'WM' => t('Payment from a WebMoney e-wallet'),
+    'AB' => t('Payment via Alfa-Click'),
+    'SB' => t('Payment via Sberbank: payment by text messages or Sberbank Online'),
+    'MA' => t('Payment via MasterPass'),
+    'PB' => t('Payment via Promsvyazbank'),
+    'QW' => t('Payment via QIWI Wallet'),
+    'QP' => t('Trust payment (Qppi.ru)'),
+  ];
+}
