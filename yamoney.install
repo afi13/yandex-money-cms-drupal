@@ -61,7 +61,7 @@ function yamoney_schema() {
         'type' => 'blob',
         'not null' => FALSE,
         'size' => 'big',
-        'description' => 'Serialized array of additional trasaction information.',
+        'description' => 'Serialized array of additional transaction information.',
       ],
     ],
     'primary key' => ['ymid'],
