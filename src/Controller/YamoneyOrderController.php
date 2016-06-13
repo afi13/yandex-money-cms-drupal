@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class YamoneyOrderController extends ControllerBase {
 
-  public function checkOrder(Request $request) {
+  public function checkOrderPage(Request $request) {
     // @todo
   }
 }

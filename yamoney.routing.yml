@@ -1,13 +1,40 @@
 yamoney.check_order:
   path: '/yamoney/check_order'
   defaults:
-    _controller: '\Drupal\yamoney\Controller\YamoneyOrderController::checkOrder'
+    _controller: '\Drupal\yamoney\Controller\YamoneyOrderController::checkOrderPage'
+  requirements:
+    _access_yamoney_check_server_ip: 'TRUE'
+yamoney.check_payments:
+  path: '/yamoney/check_payment'
+  defaults:
+    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::checkPaymentPage'
   requirements:
     _access_yamoney_check_server_ip: 'TRUE'
 yamoney.settings:
   path: '/admin/config/system/yamoney'
   defaults:
-      _form: '\Drupal\yamoney\Form\YamapsSettingsForm'
-      _title: 'Yandex.Money settings'
+    _form: '\Drupal\yamoney\Form\YamapsSettingsForm'
+    _title: 'Yandex.Money settings'
   requirements:
-      _permission: 'access yamoney settings'
+    _permission: 'access yamoney settings'
+yamoney.transaction_complete:
+  path: '/yamoney/complete'
+  defaults:
+    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::completePage'
+    _title: 'Congratulations!'
+  requirements:
+    _permission: 'access content'
+yamoney.transaction_fail:
+  path: '/yamoney/fail'
+  defaults:
+    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::failPage'
+    _title: 'Sorry!'
+  requirements:
+    _permission: 'access content'
+yamoney.transaction_temp:
+  path: '/yamoney/temp'
+  defaults:
+    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::tempPage'
+    _title: 'Temp!'
+  requirements:
+    _permission: 'access content'
