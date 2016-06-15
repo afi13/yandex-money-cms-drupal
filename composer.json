@@ -1,6 +1,7 @@
 {
   "name": "yandex-money/yamoney",
   "description": "Drupal - Yandex Money",
+  "type": "drupal-module",
   "homepage": "https://github.com/yandex-money/yandex-money-cms-drupal",
   "minimum-stability": "dev",
   "prefer-stable": true,
