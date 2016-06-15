@@ -57,9 +57,8 @@ install:
   # Re-enable when trying to get CodeSniffer doesn't return a 403 anymore.
   #- composer global require drupal/coder:\>7
   # Installing Drupal Console
-  - php -r "readfile('https://drupalconsole.com/installer');" > drupal.phar
-  - sudo mv drupal.phar /usr/local/bin/drupal
-  - sudo chmod +x /usr/local/bin/drupal
+  - composer global require drupal/console:@stable
+  - echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bash_profile
   - drupal self-update
 
 before_script:
