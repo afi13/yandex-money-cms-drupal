@@ -63,12 +63,13 @@ install:
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/../drupal
+  - composer install
   - composer update --prefer-source
   # Update drupal core
   - git pull origin 8.1.x
   # Install the site
-#  - drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
-  - drupal site:install minimal --db-host=mysql://root:@localhost/drupal
+  - drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
+#  - drupal site:install minimal --db-host=mysql://root:@localhost/drupal
   - drush en --yes simpletest
   - drush cr
   - phpenv rehash
