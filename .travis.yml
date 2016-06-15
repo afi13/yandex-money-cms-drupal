@@ -58,7 +58,7 @@ install:
 before_script:
   - cd $TRAVIS_BUILD_DIR/../drupal
   # Update drupal core
-  - git pull origin 8.0.x
+  - git pull origin 8.1.x
   # Install the site
   - drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
   - drush en --yes simpletest
@@ -67,8 +67,8 @@ before_script:
 
 script:
   # go to our Drupal module directory
-  - mkdir $TRAVIS_BUILD_DIR/../drupal/modules/token
-  - cp -R $TRAVIS_BUILD_DIR/* $TRAVIS_BUILD_DIR/../drupal/modules/token/
+  - mkdir $TRAVIS_BUILD_DIR/../drupal/modules/yamoney
+  - cp -R $TRAVIS_BUILD_DIR/* $TRAVIS_BUILD_DIR/../drupal/modules/yamoney/
   # go to our Drupal main directory
   - cd $TRAVIS_BUILD_DIR/../drupal
   - ls -la $TRAVIS_BUILD_DIR/../drupal/sites/default
