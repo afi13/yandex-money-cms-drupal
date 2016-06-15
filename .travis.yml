@@ -25,6 +25,8 @@ mysql:
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  # Update composer.
+  - composer self-update
 
 install:
   # Grab Drush
@@ -54,6 +56,11 @@ install:
   - curl -v "http://localhost"
   # Re-enable when trying to get CodeSniffer doesn't return a 403 anymore.
   #- composer global require drupal/coder:\>7
+  # Installing Drupal Console
+  - php -r "readfile('https://drupalconsole.com/installer');" > drupal.phar
+  - sudo mv drupal.phar /usr/local/bin/drupal
+  - sudo chmod +x /usr/local/bin/drupal
+  - drupal self-update
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/../drupal
@@ -61,7 +68,8 @@ before_script:
   # Update drupal core
   - git pull origin 8.1.x
   # Install the site
-  - drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
+#  - drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
+  - drupal site:install minimal --db-host=mysql://root:@localhost/drupal
   - drush en --yes simpletest
   - drush cr
   - phpenv rehash
