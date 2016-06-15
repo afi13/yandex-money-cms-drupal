@@ -1,0 +1,13 @@
+{
+  "name": "yandex-money/yamoney",
+  "description": "Drupal - Yandex Money",
+  "homepage": "https://github.com/yandex-money/yandex-money-cms-drupal",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "bin": [
+    "yamoney"
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  }
+}
