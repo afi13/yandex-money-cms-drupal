@@ -59,7 +59,7 @@ install:
   # Installing Drupal Console
   - composer global require drupal/console:@stable
   - echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bash_profile
-  - drupal self-update
+  - composer global update drupal/console:@stable
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/../drupal
