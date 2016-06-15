@@ -49,7 +49,6 @@ install:
   # Get latest drupal 8 core
   - cd $TRAVIS_BUILD_DIR/..
   - git clone --depth 1 --branch 8.1.x https://git.drupal.org/project/drupal.git
-  - composer update --prefer-source
   # Restart apache and test itWhat
   - sudo service apache2 restart
   - curl -v "http://localhost"
@@ -58,6 +57,7 @@ install:
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/../drupal
+  - composer update --prefer-source
   # Update drupal core
   - git pull origin 8.1.x
   # Install the site
