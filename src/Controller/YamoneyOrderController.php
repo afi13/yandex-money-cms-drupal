@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamoney\Controller\YamoneyOrderController.
- */
-
 namespace Drupal\yamoney\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

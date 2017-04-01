@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamoney\Access\YamoneyServerIpAccessCheck.
- */
-
 namespace Drupal\yamoney\Access;
 
 use Drupal\Core\Access\AccessResult;
