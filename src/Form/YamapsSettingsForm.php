@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamoney\Form\YamapsSettingsForm.
- */
-
 namespace Drupal\yamoney\Form;
 
 use Drupal\Core\Form\ConfigFormBase;

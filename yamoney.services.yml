@@ -3,3 +3,6 @@ services:
     class: Drupal\yamoney\Access\YamoneyServerIpAccessCheck
     tags:
       - { name: access_check, applies_to: _access_yamoney_check_server_ip }
+
+  yamoney.payment_service:
+    class: Drupal\yamoney\YamoneyService
