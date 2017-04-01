@@ -10,4 +10,9 @@ class YamoneyPaymentController extends ControllerBase {
   public function checkPaymentPage(Request $request) {
 
   }
+
+  public function completePage(Request $request) {
+
+  }
+
 }

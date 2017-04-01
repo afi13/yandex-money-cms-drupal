@@ -6,7 +6,7 @@ yamoney.settings:
       type: string
       label: 'Allowed IPs for callbacks'
     yamoney_payment_method:
-      type: string
+      type: sequence
       label: 'Enabled payment methods'
     yamoney_default_payment_method:
       type: string

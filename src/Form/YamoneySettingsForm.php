@@ -4,11 +4,36 @@ namespace Drupal\yamoney\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\yamoney\YamoneyService;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides form for yamoney module settings.
  */
-class YamapsSettingsForm extends ConfigFormBase {
+class YamoneySettingsForm extends ConfigFormBase {
+
+  /**
+   * @var \Drupal\yamoney\YamoneyService
+   */
+  protected $yamoney;
+
+  /**
+   * Constructs a new YamoneySettingsForm.
+   *
+   * @param \Drupal\yamoney\YamoneyService $yamoney
+   */
+  public function __construct(YamoneyService $yamoney) {
+    $this->yamoney = $yamoney;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('yamoney.payment_service')
+    );
+  }
 
   /**
    * @inheritdoc
@@ -59,14 +84,14 @@ class YamapsSettingsForm extends ConfigFormBase {
     $form['yamoney_all']['yamoney_payment_method'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Enabled payment methods'),
-      '#options' => yamoney_get_payment_methods(),
+      '#options' => $this->yamoney->getPaymentMethods(),
       '#default_value' => $config->get('yamoney_payment_method'),
     ];
 
     $form['yamoney_all']['yamoney_default_payment_method'] = [
       '#type' => 'radios',
       '#title' => t('Default payment method'),
-      '#options' => yamoney_get_payment_methods(),
+      '#options' => $this->yamoney->getPaymentMethods(),
       '#default_value' => $config->get('yamoney_default_payment_method'),
     ];
 
@@ -145,16 +170,16 @@ class YamapsSettingsForm extends ConfigFormBase {
     $form['yamoney_texts']['yamoney_success_text'] = [
       '#type' => 'text_format',
       '#title' => t('Text for success page'),
-      '#default_value' => $success['value'] ? $success['value'] : '',
-      '#format' => $success['format'] ? $success['format'] : '',
+      '#default_value' => $success,
+      '#format' => $success['format'] ? $success['format'] : 'restricted_html',
     ];
 
     $fail = $config->get('yamoney_fail_text');
     $form['yamoney_texts']['yamoney_fail_text'] = [
       '#type' => 'text_format',
       '#title' => t('Text for fail page'),
-      '#default_value' => $fail['value'] ? $fail['value'] : '',
-      '#format' => $fail['format'] ? $fail['format'] : '',
+      '#default_value' =>$fail,
+      '#format' => $fail['format'] ? $fail['format'] : 'restricted_html',
     ];
 
     return parent::buildForm($form, $form_state);
@@ -164,7 +189,30 @@ class YamapsSettingsForm extends ConfigFormBase {
    * @inheritdoc
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+
+    $payment_method = [];
+    foreach ($values['yamoney_payment_method'] as $method) {
+      if ($method) {
+        $payment_method[] = $method;
+      }
+    }
+
+    $this->config('yamoney.settings')
+      ->set('yamoney_ip', $values['yamoney_ip'])
+      ->set('yamoney_payment_method', $payment_method)
+      ->set('yamoney_default_payment_method', $values['yamoney_default_payment_method'])
+      ->set('yamoney_shop', $values['yamoney_shop'])
+      ->set('yamoney_shop_id', $values['yamoney_shop_id'])
+      ->set('yamoney_scid', $values['yamoney_scid'])
+      ->set('yamoney_secret', $values['yamoney_secret'])
+      ->set('yamoney_receiver', $values['yamoney_receiver'])
+      ->set('yamoney_formcomment', $values['yamoney_formcomment'])
+      ->set('yamoney_success_text', $values['yamoney_success_text']['value'])
+      ->set('yamoney_fail_text', $values['yamoney_fail_text']['value'])
+      ->save();
 
     parent::submitForm($form, $form_state);
   }
+
 }

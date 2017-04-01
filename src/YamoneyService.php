@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\yamoney\Entity\YAMoneyTransaction;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class YamoneyService {
@@ -34,21 +35,10 @@ class YamoneyService {
 
   /**
    * Constructs a new YamoneyService.
-   *
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    */
-  public function __construct(ModuleHandlerInterface $module_handler) {
+  public function __construct() {
     $this->config = $this->config('yamoney.settings');
-    $this->moduleHandler = $module_handler;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('module_handler')
-    );
+    $this->moduleHandler = \Drupal::moduleHandler();
   }
 
   /**
@@ -195,17 +185,17 @@ class YamoneyService {
    */
   public function getPaymentMethods() {
     return [
-      'PC' => t('Payment from a Yandex.Money e-wallet'),
-      'AC' => t('Payment by any bank card'),
-      'GP' => t('Payment in cash via retailers and payment kiosks'),
-      'MC' => t('Payment from a mobile phone balance'),
-      'WM' => t('Payment from a WebMoney e-wallet'),
-      'AB' => t('Payment via Alfa-Click'),
-      'SB' => t('Payment via Sberbank: payment by text messages or Sberbank Online'),
-      'MA' => t('Payment via MasterPass'),
-      'PB' => t('Payment via Promsvyazbank'),
-      'QW' => t('Payment via QIWI Wallet'),
-      'QP' => t('Trust payment (Qppi.ru)'),
+      'PC' => $this->t('Payment from a Yandex.Money e-wallet'),
+      'AC' => $this->t('Payment by any bank card'),
+      'GP' => $this->t('Payment in cash via retailers and payment kiosks'),
+      'MC' => $this->t('Payment from a mobile phone balance'),
+      'WM' => $this->t('Payment from a WebMoney e-wallet'),
+      'AB' => $this->t('Payment via Alfa-Click'),
+      'SB' => $this->t('Payment via Sberbank: payment by text messages or Sberbank Online'),
+      'MA' => $this->t('Payment via MasterPass'),
+      'PB' => $this->t('Payment via Promsvyazbank'),
+      'QW' => $this->t('Payment via QIWI Wallet'),
+      'QP' => $this->t('Trust payment (Qppi.ru)'),
     ];
   }
 

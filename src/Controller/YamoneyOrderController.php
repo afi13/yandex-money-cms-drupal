@@ -4,6 +4,7 @@ namespace Drupal\yamoney\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\yamoney\Entity\YAMoneyTransaction;
 use Drupal\yamoney\YamoneyService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;

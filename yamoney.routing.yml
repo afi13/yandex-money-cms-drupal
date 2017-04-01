@@ -13,28 +13,28 @@ yamoney.check_payments:
 yamoney.settings:
   path: '/admin/config/system/yamoney'
   defaults:
-    _form: '\Drupal\yamoney\Form\YamapsSettingsForm'
+    _form: '\Drupal\yamoney\Form\YamoneySettingsForm'
     _title: 'Yandex.Money settings'
   requirements:
     _permission: 'access yamoney settings'
 yamoney.transaction_complete:
   path: '/yamoney/complete'
   defaults:
-    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::completePage'
+    _controller: '\Drupal\yamoney\Controller\YamoneyTransactionController::completePage'
     _title: 'Congratulations!'
   requirements:
     _permission: 'access content'
 yamoney.transaction_fail:
   path: '/yamoney/fail'
   defaults:
-    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::failPage'
+    _controller: '\Drupal\yamoney\Controller\YamoneyTransactionController::failPage'
     _title: 'Sorry!'
   requirements:
     _permission: 'access content'
 yamoney.transaction_temp:
   path: '/yamoney/temp'
   defaults:
-    _controller: '\Drupal\yamoney\Controller\YamoneyPaymentController::tempPage'
+    _controller: '\Drupal\yamoney\Controller\YamoneyTransactionController::tempPage'
     _title: 'Temp!'
   requirements:
     _permission: 'access content'
