@@ -1,0 +1,7 @@
+ya_donate.config:
+  path: '/admin/config/yamoney/donate'
+  defaults:
+    _form: '\Drupal\ya_donate\Form\YaDonateSettingsForm'
+    _title: 'Yandex donate settings'
+  requirements:
+    _permission: 'access yamoney donate settings'

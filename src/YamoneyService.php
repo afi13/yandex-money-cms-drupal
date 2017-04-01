@@ -45,25 +45,44 @@ class YamoneyService {
    * @return string
    */
   public function getOrderSubmissionUrl() {
-    $is_test = $this->config->get('yamoney_mode') === 'test';
     $shop = $this->config->get('yamoney_shop');
 
     if ($shop) {
       // shop
-      $url = ($is_test) ? self::TEST_ESHOP_URL : self::PRODUCTION_ESHOP_URL;
+      $url = ($this->isTest()) ? self::TEST_ESHOP_URL : self::PRODUCTION_ESHOP_URL;
       return $url;
     }
     else {
       // quick
-      $url = ($is_test) ? self::TEST_QUICKPAY_URL : self::PRODUCTION_QUICKPAY_URL;
-      return $url;
+      return $this->getQuickpayUrl();
     }
+  }
+
+  /**
+   * @return string
+   */
+  public function getQuickpayUrl() {
+    return ($this->isTest()) ? self::TEST_QUICKPAY_URL : self::PRODUCTION_QUICKPAY_URL;
+  }
+
+  /**
+   * @return array|mixed|null
+   */
+  public function getReceiver() {
+    return $this->config->get('yamoney_receiver');
+  }
+
+  /**
+   * @return bool
+   */
+  public function isTest() {
+    return $this->config->get('yamoney_mode') === 'test';
   }
 
   /**
    * @return array
    */
-  function getEnabledPaymentMethods() {
+  public function getEnabledPaymentMethods() {
     $payments = [];
 
     $all_payments = $this->config->get('yamoney_payment_method');

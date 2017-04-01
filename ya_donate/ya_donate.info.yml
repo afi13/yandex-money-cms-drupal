@@ -1,0 +1,8 @@
+name: Yandex.Money Donate
+type: module
+description: 'Yandex Money Donate module.'
+package: Yandex.Money
+# version: VERSION
+core: 8.x
+dependencies:
+ - yamoney

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ *   Module provides yandex money donate block.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ya_donate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ush_search module.
+    case 'help.page.yamoney_donate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides Yandex donate block') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,8 @@
+access yamoney donate settings:
+  title: 'Access YaMoney donate settings'
+  description: 'Yandex money donate settings.'
+  restrict access: true
+view donate block:
+  title: 'Access YaMoney donate block'
+  description: 'Yandex money donate block.'
+  restrict access: true
