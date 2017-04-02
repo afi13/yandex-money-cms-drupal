@@ -1,0 +1,8 @@
+name: Yandex.Money Ubercart
+type: module
+description: 'Yandex Money Ubercart module.'
+package: Yandex.Money
+# version: VERSION
+core: 8.x
+dependencies:
+ - yamoney

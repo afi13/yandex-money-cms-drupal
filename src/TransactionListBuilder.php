@@ -2,7 +2,8 @@
 
 namespace Drupal\yamoney;
 
+use Drupal\Core\Entity\EntityListBuilder;
 
-class TransactionListBuilder {
+class TransactionListBuilder extends EntityListBuilder {
 
 }
