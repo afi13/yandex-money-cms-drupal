@@ -48,7 +48,7 @@ class YamoneyPaymentMethod extends PaymentMethodPluginBase implements OffsitePay
    * {@inheritdoc}
    */
   public function getDisplayLabel($label) {
-    $logo_path = drupal_get_path('module', 'ya_ubercart') . '/images/logo.png';
+    $logo_path = drupal_get_path('module', 'yamoney') . '/images/logo.png';
     $build['logo'] = [
       '#theme' => 'image',
       '#uri' => $logo_path,
